@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfólio profissional de Ony Carlos - Desenvolvedor Front-end e UI Designer">
+    <meta name="keywords" content="portfolio, desenvolvedor, frontend, ui designer, ony carlos">
+    <title>Ony Carlos | Portfólio Profissional</title>
+    <style>
+        :root {
+            --cor-primaria: #1a73e8;
+            --cor-fundo: #f4f7fa;
+            --cor-texto: #333;
+            --cor-secundaria: #555;
+            --cor-footer-bg: #fff;
+            --cor-footer-texto: #666;
+            --cor-link: var(--cor-primaria);
+            --cor-link-hover: #155ab6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        header {
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background: var(--cor-footer-bg);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: background-color 0.4s;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        /* NOVO: Logotipo profissional */
+        .logo-dev {
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
+
+        .logo-symbol {
+            width: 42px;
+            height: 42px;
+            margin-right: 12px;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, #4e9af1 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+        }
+
+        .logo-symbol::before {
+            content: "OC";
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            z-index: 2;
+        }
+
+        .logo-symbol::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: -6px;
+            right: -6px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--cor-link-hover);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--cor-primaria);
+            border-radius: 2px;
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: var(--cor-footer-bg);
+                flex-direction: column;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.4s;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        section {
+            padding: 5rem 20px;
+            max-width: 1000px;
+            margin: auto;
+            transition: color 0.4s;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--cor-primaria);
+            border-left: 5px solid var(--cor-primaria);
+            padding-left: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sobre */
+        .sobre {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .sobre img {
+            width: 250px;
+            border-radius: 10px;
+            border: 3px solid var(--cor-primaria);
+            filter: grayscale(50%);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .sobre img:hover {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        .sobre-texto p {
+            max-width: 600px;
+            margin-bottom: 1rem;
+            color: var(--cor-secundaria);
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 1rem;
+            color: var(--cor-secundaria);
+        }
+
+        .skill-item {
+            background: #e8f0fe;
+            color: var(--cor-primaria);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.15);
+            transition: background-color 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            background-color: #c1d5fb;
+        }
+
+        /* Experiência */
+        #experiencia {
+            padding: 5rem 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--cor-primaria);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+            border-radius: 3px;
+        }
+
+        .experiencia-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .experiencia-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--cor-footer-bg);
+            border: 3px solid var(--cor-primaria);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+            text-align: right;
+        }
+
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .experiencia-content {
+            padding: 20px;
+            background-color: var(--cor-footer-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .experiencia-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .experiencia-content h3 {
+            color: var(--cor-primaria);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .experiencia-content h3::before {
+            content: '💼';
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .experiencia-periodo {
+            color: var(--cor-secundaria);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experiencia-descricao {
+            color: var(--cor-texto);
+            font-size: 0.95rem;
+        }
+
+        .tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tecnologia {
+            background: #e8f0fe;
+            color: var(--cor-primaria);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media(max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .experiencia-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .experiencia-item::after {
+                left: 21px;
+            }
+
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+
+        /* Projetos */
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--cor-footer-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(26, 115, 232, 0.2);
+            transition: transform .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-modal {
+            margin-top: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--cor-primaria);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-modal:hover {
+            background: var(--cor-link-hover);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 20;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--cor-footer-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            max-width: 450px;
+            color: var(--cor-texto);
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.3);
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        .modal-content h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--cor-primaria);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--cor-link-hover);
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--cor-primaria);
+        }
+
+        input,
+        textarea {
+            padding: 0.8rem;
+            background: #f9f9f9;
+            color: var(--cor-texto);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--cor-primaria);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        button {
+            padding: 0.8rem;
+            background: var(--cor-primaria);
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background: var(--cor-link-hover);
+        }
+
+        button:focus {
+            outline: 2px solid var(--cor-link-hover);
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cor-footer-bg);
+            padding: 2rem 20px;
+            text-align: center;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+            margin-top: 4rem;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons button img {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+            filter: brightness(0.7);
+        }
+
+        body.dark .social-icons button img {
+            filter: invert(1) brightness(1.5);
+        }
+
+        .social-icons button:hover img {
+            transform: scale(1.2);
+            filter: brightness(1);
+        }
+
+        body.dark .social-icons button:hover img {
+            filter: invert(1) brightness(2);
+        }
+
+        .social-icons button:focus img {
+            transform: scale(1.2);
+            outline: none;
+        }
+
+        .download-cv {
+            margin: 1.5rem 0;
+        }
+
+        .download-cv a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--cor-primaria);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .download-cv a:hover {
+            background: var(--cor-link-hover);
+        }
+
+        footer p {
+            color: var(--cor-footer-texto);
+            font-size: 0.9rem;
+        }
+
+        /* Dark Mode */
+        body.dark {
+            --cor-fundo: #121212;
+            --cor-texto: #eee;
+            --cor-secundaria: #bbb;
+            --cor-footer-bg: #1e1e1e;
+            --cor-footer-texto: #888;
+            --cor-primaria: #4e9af1;
+            --cor-link: #74b9ff;
+            --cor-link-hover: #3a7bd5;
+        }
+
+        body.dark header,
+        body.dark .nav-links {
+            background: var(--cor-footer-bg);
+        }
+
+        body.dark input,
+        body.dark textarea {
+            background: #2a2a2a;
+            color: var(--cor-texto);
+            border-color: #555;
+        }
+
+        body.dark .skill-item,
+        body.dark .tecnologia {
+            background: rgba(78, 154, 241, 0.1);
+            color: var(--cor-primaria);
+        }
+
+        /* NOVO: Botão de tema com ícones dinâmicos */
+        #btnToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--cor-footer-bg);
+            border: 2px solid var(--cor-primaria);
+            border-radius: 30px;
+            padding: 8px 14px 8px 40px;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 100;
+            user-select: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #btnToggle::before {
+            content: "🌙";
+            position: absolute;
+            left: 10px;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        body.dark #btnToggle::before {
+            content: "☀️";
+        }
+
+        #btnToggle:hover {
+            background: var(--cor-primaria);
+            color: #fff;
+        }
+
+        @media(max-width:768px) {
+            .sobre {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-icons {
+                gap: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NOVO: Botão de tema com ícones dinâmicos -->
+    <button id="btnToggle" aria-label="Alternar modo claro e escuro">Modo Escuro</button>
+
+    <header>
+        <nav>
+            <!-- NOVO: Logotipo profissional -->
+            <a href="#" class="logo-dev">
+                <div class="logo-symbol"></div>
+                <span>Ony Carlos</span>
+            </a>
+           
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" aria-label="Abrir menu" role="button" tabindex="0">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="sobre">
+        <h1>Olá, eu sou Ony Carlos</h1>
+        <div class="sobre">
+            <div class="logo">
+                <img src="./FB_IMG_1715855108160.jpg" alt="Foto de Ony Carlos - Desenvolvedor Front-end" loading="lazy" />
+            </div>
+
+            <div class="sobre-texto">
+                <p>Olá! Sou <strong>Ony Carlos Oliveira Silva</strong>, um desenvolvedor e designer apaixonado por criar
+                    soluções digitais elegantes e funcionais.</p>
+                <p>Com experiência em front-end, UI/UX design, e desenvolvimento web, meu objetivo é transformar ideias
+                    em experiências digitais que impactam positivamente os usuários.</p>
+                <p>Valorizo qualidade, organização e inovação em todos os meus projetos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <div class="skill-item">HTML5</div>
+            <div class="skill-item">CSS3</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">React</div>
+            <div class="skill-item">Node.js</div>
+            <div class="skill-item">TypeScript</div>
+            <div class="skill-item">UI/UX Design</div>
+            <div class="skill-item">Git & GitHub</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">Responsive Design</div>
+            <div class="skill-item">SASS</div>
+            <div class="skill-item">Bootstrap</div>
+        </div>
+    </section>
+
+    <section id="experiencia">
+        <h2>Experiência Profissional</h2>
+        <div class="timeline">
+            <!-- Experiência 1 -->
+            <div class="experiencia-item left">
+                <div class="experiencia-content">
+                    <h3>Desenvolvedor Front-end Sênior</h3>
+                    <div class="experiencia-periodo">
+                        <a href="https://techsolutions.com" target="_blank" rel="noopener">Tech Solutions</a> | Jan 2022 - Presente
+                    </div>
+                    <p class="experiencia-descricao">
+                        Liderança no desenvolvimento de interfaces com React.js e TypeScript.
+                        Arquitetura de componentes reutilizáveis e otimização de performance.
+                        Colaboração com equipes de UX/UI e backend para implementação de features.
+                    </p>
+                    <div class="tecnologias">
+                        <span class="tecnologia">React</span>
+                        <span class="tecnologia">TypeScript</span>
+                        <span class="tecnologia">Redux</span>
+                        <span class="tecnologia">Jest</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiência 2 -->
+            <div class="experiencia-item right">
+                <div class="experiencia-content">
+                    <h3>UI Designer & Front-end Developer</h3>
+                    <div class="experiencia-periodo">
+                        <a href="https://criativadigital.com" target="_blank" rel="noopener">Agência Criativa Digital</a> | Mar 2020 - Dez 2021
+                    </div>
+                    <p class="experiencia-descricao">
+                        Criação de interfaces e protótipos interativos no Figma.
+                        Desenvolvimento front-end de landing pages e aplicações web.
+                        Testes de usabilidade e iteração baseada em feedback de usuários.
+                    </p>
+                    <div class="tecnologias">
+                        <span class="tecnologia">Figma</span>
+                        <span class="tecnologia">JavaScript</span>
+                        <span class="tecnologia">CSS3</span>
+                        <span class="tecnologia">WordPress</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiência 3 -->
+            <div class="experiencia-item left">
+                <div class="experiencia-content">
+                    <h3>Estagiário em Desenvolvimento</h3>
+                    <div class="experiencia-periodo">
+                        <a href="https://inovatech.com" target="_blank" rel="noopener">Startup InovaTech</a> | Ago 2019 - Fev 2020
+                    </div>
+                    <p class="experiencia-descricao">
+                        Aprendizado de boas práticas de desenvolvimento front-end.
+                        Implementação de features em JavaScript e CSS.
+                        Participação em sprints e daily meetings com equipe ágil.
+                    </p>
+                    <div class="tecnologias">
+                        <span class="tecnologia">HTML5</span>
+                        <span class="tecnologia">CSS3</span>
+                        <span class="tecnologia">JavaScript</span>
+                        <span class="tecnologia">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos</h2>
+        <div class="projetos">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=400&q=80"
+                    alt="Projeto Portfólio Pessoal" loading="lazy" />
+                <div class="card-content">
+                    <h3>Portfólio Pessoal</h3>
+                    <p>Site responsivo que exibe meu perfil e projetos usando HTML, CSS e JavaScript.</p>
+                    <button class="btn-modal" data-projeto="portfolio">Saiba Mais</button>
+                    <a href="https://github.com/onycarlos/portfolio" target="_blank" rel="noopener" style="display: block; margin-top: 0.5rem; color: var(--cor-primaria);">Ver código no GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+                    alt="Projeto Loja Online" loading="lazy" />
+                <div class="card-content">
+                    <h3>Loja Online</h3>
+                    <p>Aplicação e-commerce simples com carrinho de compras e integração de pagamentos.</p>
+                    <button class="btn-modal" data-projeto="loja">Saiba Mais</button>
+                    <a href="https://github.com/onycarlos/ecommerce" target="_blank" rel="noopener" style="display: block; margin-top: 0.5rem; color: var(--cor-primaria);">Ver código no GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80"
+                    alt="Projeto Dashboard Analytics" loading="lazy" />
+                <div class="card-content">
+                    <h3>Dashboard Analytics</h3>
+                    <p>Painel administrativo com gráficos interativos e visualização de dados em tempo real.</p>
+                    <button class="btn-modal" data-projeto="dashboard">Saiba Mais</button>
+                    <a href="https://github.com/onycarlos/dashboard" target="_blank" rel="noopener" style="display: block; margin-top: 0.5rem; color: var(--cor-primaria);">Ver código no GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Seu email" required />
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+            </div>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-icons" role="contentinfo" aria-label="Redes sociais">
+            <button onclick="window.open('https://github.com/onycarlos', '_blank')" aria-label="GitHub">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            </button>
+            <button onclick="window.open('https://www.linkedin.com/in/onycarlos', '_blank')" aria-label="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                    alt="LinkedIn" />
+            </button>
+            <button onclick="window.open('https://twitter.com/onycarlos', '_blank')" aria-label="Twitter">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Twitter" />
+            </button>
+            <button onclick="window.open('mailto:ony@example.com')" aria-label="Email">
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+            </button>
+        </div>
+
+        <div class="download-cv">
+            <a href="ony-carlos-curriculo.pdf" download="Ony-Carlos-Curriculo.pdf">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Baixar CV
+            </a>
+        </div>
+
+        <p>© <span id="currentYear"></span> Ony Carlos Oliveira Silva. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+            aria-describedby="modalDesc">
+            <button class="close-modal" aria-label="Fechar modal">&times;</button>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+            <a id="modalLink" href="#" target="_blank" rel="noopener" style="color: var(--cor-primaria); display: inline-block; margin-top: 1rem;">Ver projeto</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle menu mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+        hamburger.addEventListener('keypress', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                navLinks.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            }
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Modal projeto
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalLink = document.getElementById('modalLink');
+        const btnsModal = document.querySelectorAll('.btn-modal');
+        const closeModalBtn = document.querySelector('.close-modal');
+
+        const projetosInfo = {
+            portfolio: {
+                title: 'Portfólio Pessoal',
+                description: 'Site responsivo que exibe meu perfil, skills e projetos usando HTML, CSS e JavaScript puros. Ideal para apresentar minha experiência e contatos.',
+                link: 'https://github.com/onycarlos/portfolio'
+            },
+            loja: {
+                title: 'Loja Online',
+                description: 'Aplicação e-commerce simples desenvolvida com React e Node.js, com sistema de carrinho, filtros de produtos e integração com gateways de pagamento.',
+                link: 'https://github.com/onycarlos/ecommerce'
+            },
+            dashboard: {
+                title: 'Dashboard Analytics',
+                description: 'Painel administrativo desenvolvido com React e Chart.js para visualização de dados em tempo real, com autenticação e armazenamento no Firebase.',
+                link: 'https://github.com/onycarlos/dashboard'
+            }
+        };
+
+        btnsModal.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const projeto = btn.getAttribute('data-projeto');
+                modalTitle.textContent = projetosInfo[projeto].title;
+                modalDesc.textContent = projetosInfo[projeto].description;
+                modalLink.href = projetosInfo[projeto].link;
+                modalLink.textContent = Ver ${projeto === 'portfolio' ? 'o' : 'o'} ${projeto} no GitHub;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', e => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Modo escuro/claro com persistência
+        const btnToggle = document.getElementById('btnToggle');
+        const body = document.body;
+
+        function setMode(dark) {
+            if (dark) {
+                body.classList.add('dark');
+                btnToggle.textContent = 'Modo Claro';
+                localStorage.setItem('modoEscuro', 'true');
+            } else {
+                body.classList.remove('dark');
+                btnToggle.textContent = 'Modo Escuro';
+                localStorage.setItem('modoEscuro', 'false');
+            }
+        }
+
+        // Carrega preferencia do localStorage
+        const modoSalvo = localStorage.getItem('modoEscuro') === 'true';
+        setMode(modoSalvo);
+
+        btnToggle.addEventListener('click', () => {
+            const modoAtivo = body.classList.contains('dark');
+            setMode(!modoAtivo);
+        });
+
+        // Formulário de contato
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            // Simulação de envio (substituir por fetch/axios)
+            console.log('Formulário enviado:', { nome, email, mensagem });
+            
+            // Feedback visual
+            alert(Obrigado, ${nome}! Sua mensagem foi enviada com sucesso. Entrarei em contato em breve.);
+            contactForm.reset();
+        });
+
+        // Atualizar ano no footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer para animações
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+
+</html>
